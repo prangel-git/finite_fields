@@ -24,7 +24,7 @@ class Polynomial:
         b = other.coefficients + [0] * len_a
         product_coefficients = [sum([a[k] * b[n-k] for k in range(min(len_a, n+1))]) for n in range(len_a + len_b - 1)]
         return Polynomial(product_coefficients)
-    
+
     def __mod__(self, other):
         
         len_a = len(self.coefficients)
