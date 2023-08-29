@@ -18,12 +18,22 @@ class Polynomial:
         return Polynomial(result_coefficients)
 
     def __mul__(self, other):
-        len_a = len(self.coefficients)
-        len_b = len(other.coefficients)
         a = self.coefficients
-        b = other.coefficients + [0] * len_a
-        product_coefficients = [sum([a[k] * b[n-k] for k in range(min(len_a, n+1))]) for n in range(len_a + len_b - 1)]
-        return Polynomial(product_coefficients)
+        b = other.coefficients
+        len_a = len(a)
+        len_b = len(b)
+        len_c = len_a + len_b - 1
+
+        c = [0] * len_c
+        for n in range(len_c):
+            sum_from = max(0, n - len_b + 1)
+            sum_to = min(len_a, n + 1)
+            if sum_from < sum_to:
+                c[n] = a[sum_from] * b[n-sum_from]
+                for k in range(sum_from + 1, sum_to):
+                    c[n] += a[k] * b[n-k]
+        
+        return Polynomial(c)
 
     def __mod__(self, other):
         
