@@ -48,10 +48,3 @@ def test_division_congruence():
     expected = mod3(2)
 
     assert addition.value == expected.value
-
-
-def test_extended_euclidean():
-    gcd, x, y = congruence.gcdExtended(5,3)
-    assert gcd == 1
-    assert x == -1
-    assert y == 2

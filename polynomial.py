@@ -1,5 +1,7 @@
 from itertools import zip_longest
 
+from utils import gcdExtended
+
 class Polynomial:
     def __init__(self, coefficients):
         self.coefficients = [c for c in coefficients]
