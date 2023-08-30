@@ -3,8 +3,9 @@ from itertools import zip_longest
 from utils import gcdExtended
 
 class Polynomial:
-    def __init__(self, coefficients):
+    def __init__(self, coefficients, indeterminate = 'x'):
         self.coefficients = [c for c in coefficients]
+        self.indeterminate = indeterminate
         erase_leading_zeroes(self.coefficients)
     
     def __call__(self, x):
@@ -66,6 +67,37 @@ class Polynomial:
     def __repr__(self):
         if self.is_zero():
             return '0'
+        
+        is_first_non_zero_coefficient = True
+        polynomial_string = ''
+        indeterminate = self.indeterminate
+        for i in range(len(self.coefficients)):
+            if not self.is_zero_coefficient(i):
+                if self.is_one_coefficient(i):
+                    if i == 0:
+                        polynomial_string = '1 +' + polynomial_string
+                    elif i == 1:
+                        polynomial_string = f'{indeterminate} + ' + polynomial_string
+                    else:
+                        polynomial_string = f'{indeterminate} ** {i} + ' + polynomial_string
+                else:
+                    if i == 1:
+                        polynomial_string = f'{self.coefficients[i]} x + ' + polynomial_string
+                    else:
+                        polynomial_string = f'{self.coefficients[i]} {indeterminate} ** {i} + ' + polynomial_string
+                
+                if is_first_non_zero_coefficient:
+                    is_first_non_zero_coefficient = False
+                    polynomial_string = polynomial_string[:-3]
+
+
+        return polynomial_string 
+
+    def is_zero_coefficient(self, k):
+        return self.coefficients[k] == self.coefficients[k] - self.coefficients[k]
+
+    def is_one_coefficient(self, k):
+        return self.coefficients[k] == self.coefficients[k] // self.coefficients[k]
     
     def is_zero(self):
         return self.coefficients == []

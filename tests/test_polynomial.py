@@ -70,9 +70,15 @@ def test_find_largest_factor():
 
     assert calculated == expected
 
-def test_polynomial_repr():
+def test_zero_polynomial_repr():
     p = Polynomial([])
     assert repr(p) == '0'
+
+def test_polynomial_repr():
+    p = Polynomial([0, 1, 2])
+    assert repr(p) == '2 x ** 2 + x'
     
-    
+def test_polynomial_on_y_repr():
+    p = Polynomial([0, 1, 2], indeterminate='y')
+    assert repr(p) == '2 y ** 2 + y'
 
