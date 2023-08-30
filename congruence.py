@@ -7,18 +7,12 @@ class EquivalenceClass:
         self.value = value % self.congruence.mod
 
     def __add__(self, other):
-        if other == 0:
-            return self.congruence(self.value) 
         return self.congruence(self.value + other.value)
     
     def __sub__(self, other):
-        if other == 0:
-            return self.congruence(self.value)
         return self.congruence(self.value - other.value)
     
     def __mul__(self, other):
-        if other == 1:
-            return self.congruence(self.value)
         return self.congruence(self.value * other.value)
     
     def __truediv__(self, other):
@@ -29,7 +23,7 @@ class EquivalenceClass:
         return self.congruence(inv)
     
     def __eq__(self, other):
-        return self.value == self.value and self.congruence == self.congruence
+        return self.value == other.value and self.congruence == other.congruence
 
 
 class Congruence:
