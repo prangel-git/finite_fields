@@ -24,6 +24,9 @@ class EquivalenceClass:
     
     def __eq__(self, other):
         return self.value == other.value and self.congruence == other.congruence
+    
+    def __repr__(self):
+        return f'{self.value} mod {self.congruence}'
 
 
 class Congruence:
@@ -32,4 +35,7 @@ class Congruence:
 
     def __call__(self, value):
         return EquivalenceClass(value, self)
+    
+    def __repr__(self) -> str:
+        return f'{self.mod}'
     
