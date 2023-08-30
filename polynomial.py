@@ -63,6 +63,10 @@ class Polynomial:
         factor = find_largest_factor(self, other)
         return factor + ((self - (other * factor)) // other)
     
+    def __repr__(self):
+        if self.is_zero():
+            return '0'
+    
     def is_zero(self):
         return self.coefficients == []
     
