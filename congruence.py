@@ -27,6 +27,9 @@ class EquivalenceClass:
     def inverse(self):
         _, inv, _ = gcdExtended(self.value, self.congruence.mod)
         return self.congruence(inv)
+    
+    def __eq__(self, other):
+        return self.value == self.value and self.congruence == self.congruence
 
 
 class Congruence:

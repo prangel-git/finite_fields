@@ -48,3 +48,8 @@ def test_division_congruence():
     expected = mod3(2)
 
     assert addition.value == expected.value
+
+def test_eq():
+    mod3 = congruence.Congruence(3)
+    assert mod3(1) == mod3(4)
+
