@@ -18,6 +18,9 @@ class EquivalenceClass:
     def __truediv__(self, other):
         return self * other.inverse()
     
+    def __floordiv__(self, other):
+        return self * other.inverse()
+    
     def inverse(self):
         _, inv, _ = gcdExtended(self.value, self.congruence.mod)
         return self.congruence(inv)
@@ -26,7 +29,7 @@ class EquivalenceClass:
         return self.value == other.value and self.congruence == other.congruence
     
     def __repr__(self):
-        return f'{self.value} mod {self.congruence}'
+        return f'{self.value} [mod {self.congruence}]'
 
 
 class Congruence:

@@ -77,6 +77,10 @@ def test_zero_polynomial_repr():
 def test_polynomial_repr():
     p = Polynomial([0, 1, 2])
     assert repr(p) == '2 x ** 2 + x'
+
+def test_polynomial_repr_1():
+    p = Polynomial([1, 1, 2])
+    assert repr(p) == '2 x ** 2 + x + 1'
     
 def test_polynomial_on_y_repr():
     p = Polynomial([0, 1, 2], indeterminate='y')

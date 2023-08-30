@@ -55,5 +55,5 @@ def test_eq():
 
 def test_repr():
     mod3 = congruence.Congruence(3)
-    assert repr(mod3(4)) == '1 mod 3'
+    assert repr(mod3(4)) == '1 [mod 3]'
 

@@ -75,7 +75,7 @@ class Polynomial:
             if not self.is_zero_coefficient(i):
                 if self.is_one_coefficient(i):
                     if i == 0:
-                        polynomial_string = '1 +' + polynomial_string
+                        polynomial_string = '1 + ' + polynomial_string
                     elif i == 1:
                         polynomial_string = f'{indeterminate} + ' + polynomial_string
                     else:
