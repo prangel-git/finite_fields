@@ -50,9 +50,36 @@ class Polynomial:
 
         new_polynomial = self - factor * other
         return new_polynomial % other
+    
+    def __eq__(self, other):
+        return self.coefficients == other.coefficients
+    
+    def __floordiv__(self, other):
+        if other.is_zero():
+            raise ZeroDivisionError
+        elif self.degree() < other.degree():
+            return Polynomial([])
+
+        factor = find_largest_factor(self, other)
+        return factor + ((self - (other * factor)) // other)
+    
+    def is_zero(self):
+        return self.coefficients == []
+    
+    def degree(self):
+        return len(self.coefficients) - 1
+    
+
 
 
 def erase_leading_zeroes(coefficients):
     while len(coefficients) != 0 and coefficients[-1] == coefficients[-1]-coefficients[-1]:
         coefficients.pop()
-    
+
+def find_largest_factor(a, b):
+    lead_coefficient_a = a.coefficients[-1]
+    lead_coefficient_b = b.coefficients[-1]
+    zero = lead_coefficient_a - lead_coefficient_a
+    answer = [zero] * (a.degree() - b.degree() + 1)
+    answer[-1] = lead_coefficient_a / lead_coefficient_b 
+    return Polynomial(answer)
