@@ -53,6 +53,6 @@ class Polynomial:
 
 
 def erase_leading_zeroes(coefficients):
-    while len(coefficients) != 0 and coefficients[-1] == 0:
+    while len(coefficients) != 0 and coefficients[-1] == coefficients[-1]-coefficients[-1]:
         coefficients.pop()
     
