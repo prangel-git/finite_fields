@@ -21,6 +21,9 @@ class EquivalenceClass:
     def __floordiv__(self, other):
         return self * other.inverse()
     
+    def __pow__(self, other):
+        return self.congruence(self.value ** other)
+    
     def inverse(self):
         _, inv, _ = gcdExtended(self.value, self.congruence.mod)
         return self.congruence(inv)
