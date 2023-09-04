@@ -1,3 +1,5 @@
+from math import isqrt
+
 def gcdExtended(a, b):
  
     # Base Case
@@ -14,3 +16,13 @@ def gcdExtended(a, b):
     y = x1
  
     return gcd, x, y
+
+def is_prime(a):
+    if a == 1:
+        return False
+    
+    for d in range(2, isqrt(a) + 1):
+        if a % d == 0:
+            return False
+        
+    return True
